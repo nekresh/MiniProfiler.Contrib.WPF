@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>MiniProfiler.Contrib.WPF</id>
+    <version>0.0.1</version>
+    <title>MiniProfiler.Contrib.WPF</title>
+    <authors>nekresh</authors>
+    <owners>nekresh</owners>
+    <projectUrl>https://github.com/nekresh/MiniProfiler.Contrib.WPF</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Provide a WPF client for MiniProfiler's reports</description>
+    <releaseNotes>Initial release</releaseNotes>
+    <copyright>Copyright 2015</copyright>
+    <tags>MiniProfiler WPF</tags>
+  </metadata>
+</package>

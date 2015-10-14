@@ -14,11 +14,12 @@
             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         </Style>
         <converter:DepthToIndentationConverter x:Key="DepthToIndentation" />
+        <converter:MaxLengthConverter x:Key="MaxLength500" />
     </UserControl.Resources>
     <StackPanel>
-        <TextBlock Text="{Binding Name}" />
-        <TextBlock HorizontalAlignment="Right"><Run Text="{Binding MachineName}" /> on <Run Text="{Binding Started}" /></TextBlock>
-        <ListView behavior:TimingGrid.CustomTimingCommand="{Binding CustomTimingCommand}" behavior:TimingGrid.TimingsSource="{Binding Timings}">
+        <TextBlock Text="{Binding Name, Mode=OneWay}" />
+        <TextBlock HorizontalAlignment="Right"><Run Text="{Binding MachineName, Mode=OneWay}" /> on <Run Text="{Binding Started, Mode=OneWay}" /></TextBlock>
+        <ListView behavior:TimingGrid.CustomTimingCommand="{Binding CustomTimingCommand, Mode=OneWay}" behavior:TimingGrid.TimingsSource="{Binding Timings, Mode=OneWay}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Step">
@@ -26,7 +27,7 @@
                             <DataTemplate>
                                 <TextBlock>
                                     <Run Text="{Binding Depth, Converter={StaticResource DepthToIndentation}, Mode=OneWay}" />
-                                    <Run Text="{Binding Name}" />
+                                    <Run Text="{Binding Name, Converter={StaticResource MaxLength500}, Mode=OneWay}" />
                                 </TextBlock>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
@@ -34,21 +35,21 @@
                     <GridViewColumn Header="Duration">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock TextAlignment="Right" Text="{Binding DurationWithoutChildrenMilliseconds}" />
+                                <TextBlock TextAlignment="Right" Text="{Binding DurationWithoutChildrenMilliseconds, Mode=OneWay}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="Duration with childrens">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock TextAlignment="Right" Text="{Binding DurationMilliseconds}" />
+                                <TextBlock TextAlignment="Right" Text="{Binding DurationMilliseconds, Mode=OneWay}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="From start">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock TextAlignment="Right">+<Run Text="{Binding StartMilliseconds}" /></TextBlock>
+                                <TextBlock TextAlignment="Right">+<Run Text="{Binding StartMilliseconds, Mode=OneWay}" /></TextBlock>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -57,7 +58,7 @@
         </ListView>
         <Popup IsOpen="{Binding CustomTimingsOpen}" StaysOpen="False" MaxWidth="800" MaxHeight="600">
             <ScrollViewer>
-                <ItemsControl ItemsSource="{Binding Timings}" Background="White">
+                <ItemsControl ItemsSource="{Binding Timings, Mode=OneWay}" Background="White">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <StackPanel />
@@ -66,7 +67,7 @@
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <StackPanel>
-                                <TextBlock Text="{Binding Name}" Background="LightGray" />
+                                <TextBlock Text="{Binding Name, Mode=OneWay}" Background="LightGray" />
                                 <ItemsControl ItemsSource="{Binding CustomTimings, Mode=OneWay}">
                                     <ItemsControl.ItemsPanel>
                                         <ItemsPanelTemplate>

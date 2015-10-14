@@ -65,6 +65,7 @@
     <Compile Include="Command\SimpleCommand.cs" />
     <Compile Include="Converter\CustomTimingConverter.cs" />
     <Compile Include="Converter\DepthToIndentationConverter.cs" />
+    <Compile Include="Converter\MaxLengthConverter.cs" />
     <Compile Include="Converter\ProfilerToResultViewModelConverter.cs" />
     <Compile Include="ProfilerManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

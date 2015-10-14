@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>MiniProfiler.Contrib.WPF</id>
-    <version>0.0.3</version>
+    <version>0.0.4</version>
     <title>MiniProfiler.Contrib.WPF</title>
     <authors>nekresh</authors>
     <owners>nekresh</owners>

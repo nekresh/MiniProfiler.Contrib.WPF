@@ -1,24 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using MiniProfiler.Contrib.WPF.Command;
 using Profiler = StackExchange.Profiling.MiniProfiler;
 
-namespace MiniProfiler.Contrib.WPF.ViewModel
+namespace MiniProfiler.Contrib.WPF
 {
-    class ProfilerManagerViewModel : ViewModelBase
+    public class ProfilerManager
     {
-        public ProfilerManagerViewModel()
+        public ProfilerManager()
         {
-            Sessions = new ObservableCollection<ProfilerResultViewModel>();
-            OpenPopupCommand = new SimpleCommand(_ => IsOpen = true);
+            Sessions = new ObservableCollection<Profiler>();
         }
+
+        public ObservableCollection<Profiler> Sessions { get; set; }
 
         public void AddProfilingSession(Uri baseAddress, string id)
         {
@@ -38,22 +35,7 @@ namespace MiniProfiler.Contrib.WPF.ViewModel
             var result = task.Result;
 
             var profiler = Profiler.FromJson(result.Content.ReadAsStringAsync().Result);
-            Sessions.Add(new ProfilerResultViewModel(profiler));
+            Sessions.Add(profiler);
         }
-
-        public ObservableCollection<ProfilerResultViewModel> Sessions { get; set; }
-
-        private bool isOpen;
-        public bool IsOpen
-        {
-            get { return isOpen; }
-            set
-            {
-                isOpen = value;
-                raisePropertyChanged("IsOpen");
-            }
-        }
-
-        public ICommand OpenPopupCommand { get; private set; }
     }
 }

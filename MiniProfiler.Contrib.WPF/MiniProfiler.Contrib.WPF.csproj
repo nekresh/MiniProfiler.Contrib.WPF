@@ -65,6 +65,8 @@
     <Compile Include="Command\SimpleCommand.cs" />
     <Compile Include="Converter\CustomTimingConverter.cs" />
     <Compile Include="Converter\DepthToIndentationConverter.cs" />
+    <Compile Include="Converter\ProfilerToResultViewModelConverter.cs" />
+    <Compile Include="ProfilerManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -78,12 +80,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="ViewModel\ProfilerManagerViewModel.cs" />
     <Compile Include="ViewModel\ProfilerResultViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
-    <Compile Include="View\ProfilerManagerView.xaml.cs">
-      <DependentUpon>ProfilerManagerView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\ProfilerResultView.xaml.cs">
       <DependentUpon>ProfilerResultView.xaml</DependentUpon>
     </Compile>
@@ -100,10 +98,6 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Page Include="View\ProfilerManagerView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\ProfilerResultView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

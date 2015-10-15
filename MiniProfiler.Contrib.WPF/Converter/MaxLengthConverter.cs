@@ -13,7 +13,7 @@ namespace MiniProfiler.Contrib.WPF.Converter
 
         public MaxLengthConverter()
         {
-            MaxLength = 150;
+            MaxLength = 100;
         }
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

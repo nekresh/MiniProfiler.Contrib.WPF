@@ -16,7 +16,7 @@
         <converter:DepthToIndentationConverter x:Key="DepthToIndentation" />
         <converter:MaxLengthConverter x:Key="MaxLength500" />
     </UserControl.Resources>
-    <StackPanel>
+    <StackPanel Background="White">
         <TextBlock Text="{Binding Name, Mode=OneWay}" />
         <TextBlock HorizontalAlignment="Right"><Run Text="{Binding MachineName, Mode=OneWay}" /> on <Run Text="{Binding Started, Mode=OneWay}" /></TextBlock>
         <ListView behavior:TimingGrid.CustomTimingCommand="{Binding CustomTimingCommand, Mode=OneWay}" behavior:TimingGrid.TimingsSource="{Binding Timings, Mode=OneWay}">
@@ -56,8 +56,8 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Popup IsOpen="{Binding CustomTimingsOpen}" StaysOpen="False" MaxWidth="800" MaxHeight="600">
-            <ScrollViewer>
+        <Popup IsOpen="{Binding CustomTimingsOpen}" StaysOpen="False">
+            <ScrollViewer MaxWidth="800" MaxHeight="600">
                 <ItemsControl ItemsSource="{Binding Timings, Mode=OneWay}" Background="White">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -86,7 +86,14 @@
                                                     </ItemsControl.ItemsPanel>
                                                     <ItemsControl.ItemTemplate>
                                                         <DataTemplate>
-                                                            <TextBlock Text="{Binding CommandString, Mode=OneWay}" />
+                                                            <Grid>
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition />
+                                                                    <ColumnDefinition />
+                                                                </Grid.ColumnDefinitions>
+                                                                <TextBlock Grid.Column="0" Text="{Binding DurationMilliseconds, Mode=OneWay}" />
+                                                                <TextBlock Grid.Column="1" Text="{Binding CommandString, Mode=OneWay}" />
+                                                            </Grid>
                                                         </DataTemplate>
                                                     </ItemsControl.ItemTemplate>
                                                 </ItemsControl>

@@ -19,6 +19,9 @@ namespace MiniProfiler.Contrib.WPF
 
         public void AddProfilingSession(Uri baseAddress, string id)
         {
+            if (Sessions.Select(s => s.Id).Any(g => g.ToString() == id))
+                return;
+
             var client = new HttpClient
             {
                 BaseAddress = baseAddress
